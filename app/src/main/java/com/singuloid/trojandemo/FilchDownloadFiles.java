@@ -59,8 +59,7 @@ public class FilchDownloadFiles extends Activity implements AdapterView.OnItemCl
         startFile(filePath + File.separator + file);
     }
 
-    private boolean checkEndsWithInStringArray(String checkItsEnd,
-                                               String[] fileEndings) {
+    private boolean checkEndsWithInStringArray(String checkItsEnd, String[] fileEndings) {
         for (String aEnd : fileEndings) {
             if (checkItsEnd.endsWith(aEnd))
                 return true;
