@@ -23,15 +23,15 @@ public class MainActivity extends Activity implements View.OnClickListener {
         mContacts = (Button) findViewById(R.id.contacts);
         mText = (Button) findViewById(R.id.text);
         mMail = (Button) findViewById(R.id.mail);
-        mWechat = (Button) findViewById(R.id.wecaht);
-        mZhifubao = (Button) findViewById(R.id.zhifubao);
-        mNotepad = (Button) findViewById(R.id.notepad);
+//        mWechat = (Button) findViewById(R.id.wecaht);
+//        mZhifubao = (Button) findViewById(R.id.zhifubao);
+//        mNotepad = (Button) findViewById(R.id.notepad);
         mContacts.setOnClickListener(this);
         mText.setOnClickListener(this);
         mMail.setOnClickListener(this);
-        mWechat.setOnClickListener(this);
-        mZhifubao.setOnClickListener(this);
-        mNotepad.setOnClickListener(this);
+//        mWechat.setOnClickListener(this);
+//        mZhifubao.setOnClickListener(this);
+//        mNotepad.setOnClickListener(this);
     }
 
     @Override
@@ -46,15 +46,15 @@ public class MainActivity extends Activity implements View.OnClickListener {
             case R.id.mail:
                 startActivity(new Intent(this, FilchDownloadFiles.class));
                 break;
-            case R.id.wecaht:
-
-                break;
-            case R.id.zhifubao:
-
-                break;
-            case R.id.notepad:
-
-                break;
+//            case R.id.wecaht:
+//
+//                break;
+//            case R.id.zhifubao:
+//
+//                break;
+//            case R.id.notepad:
+//
+//                break;
         }
     }
 }
