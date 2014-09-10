@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.provider.CallLog;
-import android.util.Log;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
@@ -22,10 +21,8 @@ public class FilchCallRecords extends Activity {
         super.onCreate(savedInstanceState);
         TextView tv = new TextView(this);
         tv.setText(getRecords());
-
         ScrollView sv = new ScrollView(this);
         sv.addView(tv);
-
         setContentView(sv);
     }
 
@@ -60,6 +57,7 @@ public class FilchCallRecords extends Activity {
                 String time = sfd.format(date);
                 //联系人
                 String name = cursor.getString(cursor.getColumnIndexOrThrow(CallLog.Calls.CACHED_NAME));
+                if (name == null || name.equals("")) name = "无名氏";
                 //通话时间,单位:s
                 String duration = cursor.getString(cursor.getColumnIndexOrThrow(CallLog.Calls.DURATION));
                 smsBuilder.append("[ ");

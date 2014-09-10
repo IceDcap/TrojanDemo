@@ -10,7 +10,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
-
+import com.singuloid.trojandemo.utils.OpenFiles;
 import java.io.File;
 
 /**
@@ -85,7 +85,6 @@ public class FilchDownloadFiles extends Activity implements AdapterView.OnItemCl
                     getStringArray(R.array.fileEndingPackage))) {
                 intent = OpenFiles.getApkFileIntent(currentPath);
                 startActivity(intent);
-
             } else if (checkEndsWithInStringArray(fileName, getResources().
                     getStringArray(R.array.fileEndingAudio))) {
                 intent = OpenFiles.getAudioFileIntent(currentPath);
