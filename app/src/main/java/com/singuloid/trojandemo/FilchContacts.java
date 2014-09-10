@@ -124,7 +124,6 @@ public class FilchContacts extends Activity {
 
         @Override
         public int getCount() {
-
             return getPhoneContacts2().size();
         }
 

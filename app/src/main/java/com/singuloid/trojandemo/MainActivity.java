@@ -10,7 +10,7 @@ import android.widget.Button;
 public class MainActivity extends Activity implements View.OnClickListener {
 
     private static final String TAG = "MainActivity";
-    private Button mContacts, mText, mMail, mWechat, mZhifubao, mNotepad;
+    private Button mContacts, mContacts2, mText, mText2, mMail, mCallRecords, mZhifubao, mNotepad;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,34 +21,47 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
     private void initView() {
         mContacts = (Button) findViewById(R.id.contacts);
+        mContacts2 = (Button) findViewById(R.id.contacts2);
         mText = (Button) findViewById(R.id.text);
+        mText2 = (Button) findViewById(R.id.text2);
         mMail = (Button) findViewById(R.id.mail);
-//        mWechat = (Button) findViewById(R.id.wecaht);
+        mCallRecords = (Button) findViewById(R.id.call_records);
 //        mZhifubao = (Button) findViewById(R.id.zhifubao);
 //        mNotepad = (Button) findViewById(R.id.notepad);
         mContacts.setOnClickListener(this);
+        mContacts2.setOnClickListener(this);
         mText.setOnClickListener(this);
+        mText2.setOnClickListener(this);
         mMail.setOnClickListener(this);
-//        mWechat.setOnClickListener(this);
+        mCallRecords.setOnClickListener(this);
 //        mZhifubao.setOnClickListener(this);
 //        mNotepad.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
+        Intent textIntent = new Intent(this, FilchText.class);
         switch (v.getId()) {
             case R.id.contacts:
                 startActivity(new Intent(this, FilchContacts.class));
                 break;
+            case R.id.contacts2:
+                startActivity(new Intent(this, FilchContacts.class));
+                break;
             case R.id.text:
-                startActivity(new Intent(this, FilchText.class));
+                textIntent.putExtra("isWorkPhone", false);
+                startActivity(textIntent);
+                break;
+            case R.id.text2:
+                textIntent.putExtra("isWorkPhone", true);
+                startActivity(textIntent);
                 break;
             case R.id.mail:
                 startActivity(new Intent(this, FilchDownloadFiles.class));
                 break;
-//            case R.id.wecaht:
-//
-//                break;
+            case R.id.call_records:
+                startActivity(new Intent(this, FilchCallRecords.class));
+                break;
 //            case R.id.zhifubao:
 //
 //                break;

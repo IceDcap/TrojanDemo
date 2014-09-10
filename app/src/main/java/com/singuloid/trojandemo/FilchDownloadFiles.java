@@ -56,7 +56,7 @@ public class FilchDownloadFiles extends Activity implements AdapterView.OnItemCl
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         String file = items[position];
-        startFile(filePath + File.separator + file);
+        openFile(filePath + File.separator + file);
     }
 
     private boolean checkEndsWithInStringArray(String checkItsEnd, String[] fileEndings) {
@@ -67,7 +67,7 @@ public class FilchDownloadFiles extends Activity implements AdapterView.OnItemCl
         return false;
     }
 
-    private void startFile(String file) {
+    private void openFile(String file) {
 
         Log.e(TAG, "file = " + file);
         File currentPath = new File(file);

@@ -43,13 +43,19 @@
             android:text="扫描workphone短信消息"/>
 
     </LinearLayout>
+    <Button
+        android:id="@+id/call_records"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="扫描通话记录"/>
 
     <Button
         android:id="@+id/mail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="扫描邮箱信息"/>
+        android:text="扫描邮箱附件"/>
 
 
 
