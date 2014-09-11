@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+    android:background="#32679b">
+<LinearLayout
+    android:id="@+id/linearlayout1"
+    android:layout_alignParentTop="true"
+    android:layout_alignParentLeft="true"
+    android:layout_marginTop="25dp"
+    android:layout_marginLeft="25dp"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+        android:id="@+id/button"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="10dp"
+         android:textColor="#ffffff"
+        android:text="扫描联系人信息"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="25dp"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="100dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="10dp"
+            android:textColor="#ffffff"
+            android:text="扫描WorkPhone联系人信息"/>
+    </LinearLayout>
+</RelativeLayout>

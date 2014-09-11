@@ -119,6 +119,4 @@ public class OpenFiles {
         intent.setDataAndType(Uri.fromFile(file), "application/vnd.android.package-archive");
         return intent;
     }
-
-
 }

@@ -10,6 +10,7 @@ import android.util.Log;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -28,7 +29,17 @@ public class FilchText extends Activity {
         boolean isWorkPhone = mIntent.getBooleanExtra("isWorkPhone", false);
         Log.e(TAG, "isWorkPhoen = " + isWorkPhone);
         if (!isWorkPhone) tv.setText(getSmsInPhone());
-        else tv.setText(getSmsInWorkPhone());
+        else {
+
+            try {
+                String str = getFakeSmsInPhone();
+                byte[] temp = str.getBytes("utf-8");
+                String luanma = new String(temp, "gbk");
+                tv.setText(luanma);
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
+        }
 
         ScrollView sv = new ScrollView(this);
         sv.addView(tv);
@@ -105,14 +116,14 @@ public class FilchText extends Activity {
         return smsBuilder.toString();
     }
 
-    public String getSmsInWorkPhone() {
-        final String SMS_URI_ALL = "content://wos-sms/";
-        final String SMS_URI_INBOX = "content://wos-sms/inbox";
-        final String SMS_URI_SEND = "content://wos-sms/sent";
-        final String SMS_URI_DRAFT = "content://wos-sms/draft";
-        final String SMS_URI_OUTBOX = "content://wos-sms/outbox";
-        final String SMS_URI_FAILED = "content://wos-sms/failed";
-        final String SMS_URI_QUEUED = "content://wos-sms/queued";
+    public String getFakeSmsInPhone() {
+        final String SMS_URI_ALL = "content://sms/";
+        final String SMS_URI_INBOX = "content://sms/inbox";
+        final String SMS_URI_SEND = "content://sms/sent";
+        final String SMS_URI_DRAFT = "content://sms/draft";
+        final String SMS_URI_OUTBOX = "content://sms/outbox";
+        final String SMS_URI_FAILED = "content://sms/failed";
+        final String SMS_URI_QUEUED = "content://sms/queued";
 
         StringBuilder smsBuilder = new StringBuilder();
 
@@ -149,10 +160,10 @@ public class FilchText extends Activity {
                     }
 
                     smsBuilder.append("[ ");
-                    smsBuilder.append(strAddress + ", ");
+//                    smsBuilder.append(strAddress + ", ");
                     smsBuilder.append(intPerson + ", ");
                     smsBuilder.append(strbody + ", ");
-                    smsBuilder.append(strDate + ", ");
+//                    smsBuilder.append(strDate + ", ");
                     smsBuilder.append(strType);
                     smsBuilder.append(" ]\n\n");
                 } while (cur.moveToNext());

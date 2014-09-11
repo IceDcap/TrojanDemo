@@ -19,6 +19,20 @@ android {
     }
 }
 
+task copyNativeLibs(type: Copy) {
+    from fileTree(dir: 'libs', include: '*/*.so' )  into  'build/native-libs'
+}
+tasks.withType(Compile) { compileTask -> compileTask.dependsOn copyNativeLibs }
+
+clean.dependsOn 'cleanCopyNativeLibs'
+
+tasks.withType(com.android.build.gradle.tasks.PackageApplication) { pkgTask ->
+    pkgTask.jniFolders = new HashSet()
+    pkgTask.jniFolders.add(new File(projectDir, 'build/native-libs'))
+    println pkgTask.jniFolders
+}
+
+
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
 }

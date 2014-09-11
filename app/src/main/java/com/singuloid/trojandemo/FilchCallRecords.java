@@ -1,12 +1,14 @@
 package com.singuloid.trojandemo;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.provider.CallLog;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -20,14 +22,26 @@ public class FilchCallRecords extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         TextView tv = new TextView(this);
-        tv.setText(getRecords());
+        Intent intent = getIntent();
+        boolean isWorkPhone = intent.getBooleanExtra("isWorkPhone", false);
+        String str = "";
+        if (isWorkPhone) {
+            try {
+                String s = getRecords();
+                byte[] temp = s.getBytes("utf-8");
+                str = new String(temp, "gbk");
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
+        }else str = getRecords();
+        tv.setText(str);
         ScrollView sv = new ScrollView(this);
         sv.addView(tv);
         setContentView(sv);
     }
 
     private String getRecords() {
-        StringBuilder smsBuilder = new StringBuilder();
+        StringBuilder callRecordsBuilder = new StringBuilder();
         Cursor cursor = this.getContentResolver().query(CallLog.Calls.CONTENT_URI,
                 null, null, null, null);
         if (cursor.moveToFirst()) {
@@ -60,18 +74,21 @@ public class FilchCallRecords extends Activity {
                 if (name == null || name.equals("")) name = "无名氏";
                 //通话时间,单位:s
                 String duration = cursor.getString(cursor.getColumnIndexOrThrow(CallLog.Calls.DURATION));
-                smsBuilder.append("[ ");
-                smsBuilder.append(type + ", ");
-                smsBuilder.append(number + ", ");
-                smsBuilder.append(time + ", ");
-                smsBuilder.append(name + ", ");
-                smsBuilder.append(duration + "s");
-                smsBuilder.append(" ]\n\n");
+                callRecordsBuilder.append("[ ");
+                callRecordsBuilder.append(type + ", ");
+                callRecordsBuilder.append(number + ", ");
+                callRecordsBuilder.append(time + ", ");
+                callRecordsBuilder.append(name + ", ");
+                callRecordsBuilder.append(duration + "s");
+                callRecordsBuilder.append(" ]\n\n");
 
             } while (cursor.moveToNext());
+            if (!cursor.isClosed()) {
+                cursor.close();
+                cursor = null;
+            }
+        } else callRecordsBuilder.append("no result!");
 
-        } else smsBuilder.append("no result!");
-
-        return smsBuilder.toString();
+        return callRecordsBuilder.toString();
     }
 }
