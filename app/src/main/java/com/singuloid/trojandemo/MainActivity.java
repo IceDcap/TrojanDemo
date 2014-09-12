@@ -8,11 +8,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.singuloid.trojandemo.utils.DBHelper;
+
 
 public class MainActivity extends Activity implements View.OnClickListener {
 
     private static final String TAG = "MainActivity";
-    private Button mContacts, mContacts2, mText, mText2, mMail, mMail2, mCallRecords, mCallRecords2, mTxt, mTxt2;
+    private Button mContacts, mContacts2, mText, mText2, mMail, mMail2, mCallRecords, mCallRecords2, mTxt, mTxt2, mRenRen;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +44,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
         mTxt.setOnClickListener(this);
         mTxt2 = (Button) findViewById(R.id.txt2);
         mTxt2.setOnClickListener(this);
+//        mRenRen = (Button) findViewById(R.id.renren);
+//        mRenRen.setOnClickListener(this);
     }
 
     @Override
@@ -91,6 +95,10 @@ public class MainActivity extends Activity implements View.OnClickListener {
             case R.id.txt2:
                 startActivity(new Intent(this, OpenNotepadOnWosFile.class));
                 break;
+//            case R.id.renren:
+//                DBHelper helper = new DBHelper(this);
+//                helper.queryAccount();
+//                break;
         }
     }
 

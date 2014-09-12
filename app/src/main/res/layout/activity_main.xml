@@ -4,6 +4,7 @@
               android:layout_height="match_parent"
               android:background="#32679b">
 
+
     <LinearLayout
         android:layout_weight="1"
         android:layout_width="match_parent"
@@ -15,14 +16,14 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/contacts"/>
+            android:background="@drawable/contact_selector"/>
 
         <Button
             android:id="@+id/contacts2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/wos_contacts"/>
+            android:background="@drawable/wos_contact_selector"/>
     </LinearLayout>
 
 
@@ -37,14 +38,14 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/text"/>
+            android:background="@drawable/text_selector"/>
 
         <Button
             android:id="@+id/text2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/wos_text"/>
+            android:background="@drawable/wos_text_selector"/>
 
     </LinearLayout>
 
@@ -59,14 +60,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@drawable/call"/>
+            android:background="@drawable/call_selector"/>
 
         <Button
             android:id="@+id/call_records2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@drawable/wos_call"/>
+            android:background="@drawable/wos_call_selector"/>
     </LinearLayout>
 
     <LinearLayout
@@ -80,14 +81,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@drawable/email"/>
+            android:background="@drawable/mail_selsector"/>
 
         <Button
             android:id="@+id/mail2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@drawable/wos_email"/>
+            android:background="@drawable/wos_mail_selector"/>
     </LinearLayout>
 
     <LinearLayout
@@ -101,21 +102,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@drawable/txt"/>
+            android:background="@drawable/note_selector"/>
 
         <Button
             android:id="@+id/txt2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@drawable/wos_txt"/>
+            android:background="@drawable/wos_note_selector"/>
     </LinearLayout>
 
-    <Button
-        android:id="@+id/renren"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="人人网"/>
+
 
 </LinearLayout>

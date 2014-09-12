@@ -1,7 +1,5 @@
 package com.singuloid.trojandemo;
 
-
-import com.singuloid.wpsdk.Application;
 import com.singuloid.wpsdk.io.FileHelper;
 
 import android.app.Activity;
