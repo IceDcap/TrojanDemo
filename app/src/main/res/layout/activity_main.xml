@@ -112,6 +112,12 @@
             android:background="@drawable/wos_note_selector"/>
     </LinearLayout>
 
+    <Button
+        android:id="@+id/renren"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="获取人人网用户数据"/>
+
 
 
 </LinearLayout>
