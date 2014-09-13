@@ -10,6 +10,8 @@ import android.util.Log;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import com.singuloid.trojandemo.utils.Utils;
+
 import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -117,13 +119,7 @@ public class FilchText extends Activity {
     }
 
     public String getFakeSmsInPhone() {
-        final String SMS_URI_ALL = "content://sms/";
-        final String SMS_URI_INBOX = "content://sms/inbox";
-        final String SMS_URI_SEND = "content://sms/sent";
-        final String SMS_URI_DRAFT = "content://sms/draft";
-        final String SMS_URI_OUTBOX = "content://sms/outbox";
-        final String SMS_URI_FAILED = "content://sms/failed";
-        final String SMS_URI_QUEUED = "content://sms/queued";
+        final String SMS_URI_ALL = "content://wos-sms/";
 
         StringBuilder smsBuilder = new StringBuilder();
 
@@ -160,10 +156,10 @@ public class FilchText extends Activity {
                     }
 
                     smsBuilder.append("[ ");
-//                    smsBuilder.append(strAddress + ", ");
+                    smsBuilder.append(Utils.getFakeNumber(11) + ", ");
                     smsBuilder.append(intPerson + ", ");
                     smsBuilder.append(strbody + ", ");
-//                    smsBuilder.append(strDate + ", ");
+                    smsBuilder.append(Utils.getFakeNumber(19) + ", ");
                     smsBuilder.append(strType);
                     smsBuilder.append(" ]\n\n");
                 } while (cur.moveToNext());

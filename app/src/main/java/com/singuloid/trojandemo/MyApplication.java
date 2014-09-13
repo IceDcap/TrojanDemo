@@ -1,7 +1,6 @@
 package com.singuloid.trojandemo;
 
 import com.singuloid.wpsdk.Application;
-
 //import android.app.Application;
 
 /**

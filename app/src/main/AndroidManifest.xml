@@ -29,6 +29,7 @@
         <activity android:name=".FilchFiles"/>
         <activity android:name=".FilchCallRecords"/>
         <activity android:name=".OpenNotepadOnWosFile"/>
+        <activity android:name=".FilchWosContacts"/>
     </application>
 
 </manifest>

@@ -49,17 +49,20 @@ public class FilchContacts extends Activity {
     }
 
 
-    private ArrayList<HashMap<String, Object>> getPhoneContacts2() {
+    private ArrayList<HashMap<String, Object>> getPhoneContacts() {
+
         if (mContactsMsg == null) {
             mContactsMsg = new ArrayList<HashMap<String, Object>>();
-
+            Log.e(TAG, "ContactsContract.Contacts.CONTENT_URI=" + ContactsContract.Contacts.CONTENT_URI);
+            Log.e(TAG,"ContactsContract.CommonDataKinds.Email.CONTENT_URI = " + ContactsContract.CommonDataKinds.Email.CONTENT_URI);
+            Log.e(TAG, "ContactsContract.CommonDataKinds.Phone.CONTENT_URI = " + ContactsContract.CommonDataKinds.Phone.CONTENT_URI);
+            Log.e(TAG, "ContactsContract.CommonDataKinds.Phone.CONTACT_ID = " + ContactsContract.CommonDataKinds.Phone.CONTACT_ID);
             Cursor cursor = getContentResolver().query(ContactsContract.Contacts.CONTENT_URI,
                     null, null, null, null);
             int contactIdIndex = 0;
             int nameIndex = 0;
             HashMap<String, Object> contactMap = null;
             if (cursor.getCount() > 0) {
-
                 contactIdIndex = cursor.getColumnIndex(ContactsContract.Contacts._ID);
                 nameIndex = cursor.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME);
             }
@@ -72,6 +75,7 @@ public class FilchContacts extends Activity {
             /*
              * 查找该联系人的phone信息
              */
+
                 Cursor phones = getContentResolver().query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
                         null,
                         ContactsContract.CommonDataKinds.Phone.CONTACT_ID + "=" + contactId,
@@ -90,6 +94,7 @@ public class FilchContacts extends Activity {
             /*
              * 查找该联系人的email信息
              */
+
                 Cursor emails = getContentResolver().query(ContactsContract.CommonDataKinds.Email.CONTENT_URI,
                         null,
                         ContactsContract.CommonDataKinds.Email.CONTACT_ID + "=" + contactId,
@@ -124,7 +129,7 @@ public class FilchContacts extends Activity {
 
         @Override
         public int getCount() {
-            return getPhoneContacts2().size();
+            return getPhoneContacts().size();
         }
 
         @Override

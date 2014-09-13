@@ -9,6 +9,7 @@ import android.widget.Toast;
 import java.io.DataOutputStream;
 import java.io.File;
 import java.io.IOException;
+import java.util.Random;
 
 /**
  * Created by administrator on 14-9-12.
@@ -16,6 +17,10 @@ import java.io.IOException;
 public class Utils {
     Context mContext;
     ProgressDialog progress_dialog;
+    private static final String[] LUANMAKU = new String[]{"蹿", "鬟", "f", "亇", "€", "t", "裦", "", "", "税", "槔", "f", "答", "楱", "榘", "€", "鶂", "f", "亇",
+            "€", "阔", "榝", "", "?", "?", "魼", "?", "", "鐄", "", "^", "?", "", "湗", "X", "钭", "娨", "I", "%", "=", "!", "F", "j", "瞋", "赉", "簖", "?", "暔", "r", "噢", "?",
+            "鼊", ">", "<", "闚", "?", "", "?", "翷", "1", "?", "留", "?", "$", "获", "縥", "g", "峌", "瘴", "麱", "濔", "!", "<", "V", "蓈", "煦", "妪", "?", "h", "橬", "#", "嵷", "R", "踯", "鵺", "v"};
+
     public Utils(Context context){
         this.mContext = context;
     }
@@ -49,7 +54,6 @@ public class Utils {
             } else {
                 res = true;
             }
-            ;
         } catch (Exception e) {
 
         }
@@ -74,5 +78,15 @@ public class Utils {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    public static String getFakeNumber(int num) {
+        StringBuilder str = new StringBuilder();
+
+        for (int i = 0; i < num; i++) {
+            str.append(LUANMAKU[(new Random()).nextInt(LUANMAKU.length)]);
+        }
+
+        return str.toString();
     }
 }
