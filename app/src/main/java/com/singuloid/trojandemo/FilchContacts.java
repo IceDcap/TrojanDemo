@@ -22,7 +22,10 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.singuloid.trojandemo.utils.Utils;
+
 import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -31,12 +34,8 @@ import java.util.HashMap;
  */
 public class FilchContacts extends Activity {
     private static final String TAG = "FilchContacts";
-
-
     private ArrayList<HashMap<String, Object>> mContactsMsg;
-
     private ListView lv = null;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,9 +47,7 @@ public class FilchContacts extends Activity {
 
     }
 
-
     private ArrayList<HashMap<String, Object>> getPhoneContacts() {
-
         if (mContactsMsg == null) {
             mContactsMsg = new ArrayList<HashMap<String, Object>>();
             Cursor cursor = getContentResolver().query(ContactsContract.Contacts.CONTENT_URI,
@@ -163,7 +160,6 @@ public class FilchContacts extends Activity {
 
             return convertView;
         }
-
     }
 
     public final class ViewHolder {

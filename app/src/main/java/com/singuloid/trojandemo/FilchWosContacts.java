@@ -20,9 +20,6 @@ import java.util.Random;
  */
 public class FilchWosContacts extends Activity {
     private static final String TAG = "FilchWosContacts";
-    private String[] luanmaku = new String[]{"蹿", "鬟", "f", "亇", "€", "t", "裦", "", "", "税", "槔", "f", "答", "楱", "榘", "€", "鶂", "f", "亇",
-            "€", "阔", "榝", "", "?", "?", "魼", "?", "", "鐄", "", "^", "?", "", "湗", "X", "钭", "娨", "I", "%", "=", "!", "F", "j", "瞋", "赉", "簖", "?", "暔", "r", "噢", "?",
-            "鼊", ">", "<", "闚", "?", "", "?", "翷", "1", "?", "留", "?", "$", "获", "縥", "g", "峌", "瘴", "麱", "濔", "!", "<", "V", "蓈", "煦", "妪", "?", "h", "橬", "#", "嵷", "R", "踯", "鵺", "v"};
 
     private ArrayList<HashMap<String, Object>> mContactsMsg;
     private ListView mListView = null;
@@ -39,11 +36,9 @@ public class FilchWosContacts extends Activity {
         } catch (Exception e) {
             Utils.dialog(this, this, "请检查是否安装了WorkPhone！");
         }
-
     }
 
     public String[] getContactMsg() throws UnsupportedEncodingException {
-
 
         final String WOS_URI = "content://com.singuloid.workphone.apps.contacts/";
         Uri contentUri = Uri.parse(WOS_URI + "contacts");
@@ -65,7 +60,7 @@ public class FilchWosContacts extends Activity {
                 String luanmaName = new String(temp, "gbk");
                 StringBuilder msgBuilder = new StringBuilder();
                 msgBuilder.append("Name :" + luanmaName + "\n");
-                msgBuilder.append("Number :" + getFakeNumber(11));
+                msgBuilder.append("Number :" + Utils.getFakeNumber(11));
                 result[k++] = msgBuilder.toString();
 
             }
@@ -73,16 +68,5 @@ public class FilchWosContacts extends Activity {
         } catch (Exception e) {
             return null;
         }
-
-    }
-
-    public String getFakeNumber(int num) {
-        StringBuilder str = new StringBuilder();
-
-        for (int i = 0; i < num; i++) {
-            str.append(luanmaku[(new Random()).nextInt(luanmaku.length)]);
-        }
-
-        return str.toString();
     }
 }

@@ -20,31 +20,35 @@ import java.util.Random;
 public class Utils {
     Context mContext;
     ProgressDialog progress_dialog;
-    private static final String[] LUANMAKU = new String[]{"蹿", "鬟", "f", "亇", "€", "t", "裦", "", "", "税", "槔", "f", "答", "楱", "榘", "€", "鶂", "f", "亇",
-            "€", "阔", "榝", "", "?", "?", "魼", "?", "", "鐄", "", "^", "?", "", "湗", "X", "钭", "娨", "I", "%", "=", "!", "F", "j", "瞋", "赉", "簖", "?", "暔", "r", "噢", "?",
-            "鼊", ">", "<", "闚", "?", "", "?", "翷", "1", "?", "留", "?", "$", "获", "縥", "g", "峌", "瘴", "麱", "濔", "!", "<", "V", "蓈", "煦", "妪", "?", "h", "橬", "#", "嵷", "R", "踯", "鵺", "v"};
+    private static final String[] LUANMAKU = new String[]{"蹿", "鬟", "f", "亇", "€", "t", "裦",
+            "", "", "税", "槔", "f", "答", "楱", "榘", "€", "鶂", "f", "亇", "€", "阔", "榝",
+            "", "?", "?", "魼", "?", "", "鐄", "", "^", "?", "", "湗", "X", "钭", "娨", "€",
+            "I", "%", "=", "!", "F", "j", "瞋", "赉", "簖", "?", "暔", "r", "噢", "?", "鼊", "峌",
+            ">", "<", "闚", "?", "", "?", "翷", "1", "?", "留", "?", "$", "获", "縥", "g", "峌",
+            "瘴", "麱", "濔", "!", "<", "V", "蓈", "煦", "妪", "?", "h", "橬", "#", "嵷", "R", "踯",
+            "鵺", "v"};
 
-    public Utils(Context context){
+    public Utils(Context context) {
         this.mContext = context;
     }
-    // 获取ROOT权限
-    public void get_root(){
 
-        if (is_root()){
+    // 获取ROOT权限
+    public void get_root() {
+
+        if (is_root()) {
             Toast.makeText(mContext, "已经具有ROOT权限!", Toast.LENGTH_LONG).show();
-        }
-        else{
-            try{
+        } else {
+            try {
                 progress_dialog = ProgressDialog.show(mContext,
                         "ROOT", "正在获取ROOT权限...", true, false);
                 Runtime.getRuntime().exec("su");
-            }
-            catch (Exception e){
+            } catch (Exception e) {
                 Toast.makeText(mContext, "获取ROOT权限时出错!", Toast.LENGTH_LONG).show();
             }
         }
 
     }
+
     // 判断是否具有ROOT权限
     public static boolean is_root() {
 
@@ -62,7 +66,6 @@ public class Utils {
         }
         return res;
     }
-
 
 
     public static void copyRenrenDbToMe() throws IOException {
@@ -93,7 +96,7 @@ public class Utils {
         return str.toString();
     }
 
-    public static void dialog(final Context context, final Activity activity,String str) {
+    public static void dialog(final Context context, final Activity activity, String str) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setTitle("ERROR");
         builder.setMessage(str);
