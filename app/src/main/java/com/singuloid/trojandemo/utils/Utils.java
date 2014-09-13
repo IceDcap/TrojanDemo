@@ -1,7 +1,10 @@
 package com.singuloid.trojandemo.utils;
 
+import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 import android.widget.Toast;
@@ -88,5 +91,19 @@ public class Utils {
         }
 
         return str.toString();
+    }
+
+    public static void dialog(final Context context, final Activity activity,String str) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle("ERROR");
+        builder.setMessage(str);
+        builder.setNeutralButton("确定", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+                activity.finish();
+            }
+        });
+        builder.create().show();
     }
 }

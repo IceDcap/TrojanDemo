@@ -1,230 +1,254 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:paddingLeft="@dimen/activity_horizontal_margin"
-              android:paddingRight="@dimen/activity_horizontal_margin"
-              android:paddingTop="@dimen/activity_vertical_margin"
-              android:paddingBottom="@dimen/activity_vertical_margin"
-              android:background="#32679b">
-
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
     <LinearLayout
-        android:layout_weight="1"
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:background="#595959">
 
-        <Button
-            android:id="@+id/contacts"
+        <LinearLayout
+            android:weightSum="2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:layout_weight="1"
+                android:id="@+id/contacts"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/contact_selector"
+                android:padding="2dp"
+                android:layout_marginRight="5dp"
+                />
+
+            <ImageButton
+                android:layout_marginLeft="5dp"
+                android:padding="2dp"
+                android:layout_weight="1"
+                android:id="@+id/contacts2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/wos_contact_selector"/>
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/contact_selector"/>
+            android:layout_height="16dp"
+            android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/contacts2"
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="截取联系人信息"
+                android:gravity="center"
+                android:textColor="#ffffff"/>
+
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="截取wos联系人信息"
+                android:gravity="center"
+                android:textColor="#ffffff"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="15dp"
+            android:weightSum="2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:padding="2dp"
+                android:layout_marginRight="5dp"
+                android:id="@+id/text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@drawable/text_selector"/>
+
+            <ImageButton
+                android:padding="2dp"
+                android:id="@+id/text2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="1"
+                android:src="@drawable/wos_text_selector"/>
+
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_marginLeft="10dp"
-            android:background="@drawable/wos_contact_selector"/>
-    </LinearLayout>
+            android:layout_height="16dp"
+            android:orientation="horizontal">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="16dp"
-        android:orientation="horizontal">
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="截取短信"
+                android:gravity="center"
+                android:textColor="#ffffff"/>
 
-        <TextView
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="截取wos短信"
+                android:gravity="center"
+                android:textColor="#ffffff"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="15dp"
             android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="扫描联系人信息"
-            android:gravity="center"
-            android:textColor="#ffffff"/>
-        <TextView
-            android:layout_weight="1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="扫描wos联系人信息"
-            android:gravity="center"
-            android:textColor="#ffffff"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_marginTop="2dp"
-        android:layout_weight="1"
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:orientation="horizontal">
+            android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/text"
+            <ImageButton
+                android:id="@+id/call_records"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="2dp"
+                android:layout_weight="1"
+                android:src="@drawable/call_selector"/>
+
+            <ImageButton
+                android:id="@+id/call_records2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="2dp"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:src="@drawable/wos_call_selector"/>
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/text_selector"/>
+            android:layout_height="16dp"
+            android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/text2"
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="截取通话记录"
+                android:gravity="center"
+                android:textColor="#ffffff"/>
+
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="截取wos通话记录"
+                android:gravity="center"
+                android:textColor="#ffffff"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="15dp"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:padding="2dp"
+                android:id="@+id/mail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@drawable/mail_selsector"/>
+
+            <ImageButton
+                android:padding="2dp"
+                android:id="@+id/mail2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:src="@drawable/wos_mail_selector"/>
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="10dp"
-            android:layout_weight="1"
-            android:background="@drawable/wos_text_selector"/>
+            android:layout_height="16dp"
+            android:orientation="horizontal">
 
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="16dp"
-        android:orientation="horizontal">
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="截取邮件附件"
+                android:gravity="center"
+                android:textColor="#ffffff"/>
 
-        <TextView
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="截取wos邮件附件"
+                android:gravity="center"
+                android:textColor="#ffffff"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="15dp"
             android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="扫描短信"
-            android:gravity="center"
-            android:textColor="#ffffff"/>
-        <TextView
-            android:layout_weight="1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="扫描wos短信"
-            android:gravity="center"
-            android:textColor="#ffffff"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_marginTop="2dp"
-        android:layout_weight="1"
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:orientation="horizontal">
+            android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/call_records"
+            <ImageButton
+                android:padding="2dp"
+                android:id="@+id/txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@drawable/note_selector"/>
+
+            <ImageButton
+                android:padding="2dp"
+                android:id="@+id/txt2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:src="@drawable/wos_note_selector"/>
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="16dp"
+            android:orientation="horizontal">
 
-            android:layout_weight="1"
-            android:background="@drawable/call_selector"/>
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="截取记事本信息"
+                android:gravity="center"
+                android:textColor="#ffffff"/>
 
-        <Button
-            android:id="@+id/call_records2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_weight="1"
-            android:background="@drawable/wos_call_selector"/>
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="截取wos记事本"
+                android:gravity="center"
+                android:textColor="#ffffff"/>
+        </LinearLayout>
+
     </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="16dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_weight="1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="扫描通话记录"
-            android:gravity="center"
-            android:textColor="#ffffff"/>
-        <TextView
-            android:layout_weight="1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="扫描wos通话记录"
-            android:gravity="center"
-            android:textColor="#ffffff"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_marginTop="2dp"
-        android:layout_weight="1"
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/mail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@drawable/mail_selsector"/>
-
-        <Button
-            android:id="@+id/mail2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_weight="1"
-            android:background="@drawable/wos_mail_selector"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="16dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_weight="1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="扫描邮件附件"
-            android:gravity="center"
-            android:textColor="#ffffff"/>
-        <TextView
-            android:layout_weight="1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="扫描wos邮件附件"
-            android:gravity="center"
-            android:textColor="#ffffff"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_marginTop="2dp"
-        android:layout_weight="1"
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/txt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@drawable/note_selector"/>
-
-        <Button
-            android:id="@+id/txt2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_weight="1"
-            android:background="@drawable/wos_note_selector"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="16dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_weight="1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="扫描记事本"
-            android:gravity="center"
-            android:textColor="#ffffff"/>
-        <TextView
-            android:layout_weight="1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="扫描wos记事本"
-            android:gravity="center"
-            android:textColor="#ffffff"/>
-    </LinearLayout>
-    <Button
-        android:id="@+id/renren"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="获取人人网用户数据"
-        android:textColor="#ffffff"/>
-</LinearLayout>
+</ScrollView>

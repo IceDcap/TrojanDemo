@@ -10,12 +10,14 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
+
 import com.singuloid.trojandemo.utils.Utils;
 
 public class MainActivity extends Activity implements View.OnClickListener {
 
     private static final String TAG = "MainActivity";
-    private Button mContacts, mContacts2, mText, mText2, mMail, mMail2, mCallRecords, mCallRecords2, mTxt, mTxt2, mRenRen;
+    private ImageButton mContacts, mContacts2, mText, mText2, mMail, mMail2, mCallRecords, mCallRecords2, mTxt, mTxt2;
     Cursor cursor;
 
     @Override
@@ -26,28 +28,26 @@ public class MainActivity extends Activity implements View.OnClickListener {
     }
 
     private void initView() {
-        mContacts = (Button) findViewById(R.id.contacts);
-        mContacts2 = (Button) findViewById(R.id.contacts2);
-        mText = (Button) findViewById(R.id.text);
-        mText2 = (Button) findViewById(R.id.text2);
-        mMail = (Button) findViewById(R.id.mail);
-        mCallRecords = (Button) findViewById(R.id.call_records);
+        mContacts = (ImageButton) findViewById(R.id.contacts);
+        mContacts2 = (ImageButton) findViewById(R.id.contacts2);
+        mText = (ImageButton) findViewById(R.id.text);
+        mText2 = (ImageButton) findViewById(R.id.text2);
+        mMail = (ImageButton) findViewById(R.id.mail);
+        mCallRecords = (ImageButton) findViewById(R.id.call_records);
         mContacts.setOnClickListener(this);
         mContacts2.setOnClickListener(this);
         mText.setOnClickListener(this);
         mText2.setOnClickListener(this);
         mMail.setOnClickListener(this);
         mCallRecords.setOnClickListener(this);
-        mMail2 = (Button) findViewById(R.id.mail2);
+        mMail2 = (ImageButton) findViewById(R.id.mail2);
         mMail2.setOnClickListener(this);
-        mCallRecords2 = (Button) findViewById(R.id.call_records2);
+        mCallRecords2 = (ImageButton) findViewById(R.id.call_records2);
         mCallRecords2.setOnClickListener(this);
-        mTxt = (Button) findViewById(R.id.txt);
+        mTxt = (ImageButton) findViewById(R.id.txt);
         mTxt.setOnClickListener(this);
-        mTxt2 = (Button) findViewById(R.id.txt2);
+        mTxt2 = (ImageButton) findViewById(R.id.txt2);
         mTxt2.setOnClickListener(this);
-        mRenRen = (Button) findViewById(R.id.renren);
-        mRenRen.setOnClickListener(this);
     }
 
     @Override

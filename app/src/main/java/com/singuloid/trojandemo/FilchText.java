@@ -38,8 +38,8 @@ public class FilchText extends Activity {
                 byte[] temp = str.getBytes("utf-8");
                 String luanma = new String(temp, "gbk");
                 tv.setText(luanma);
-            } catch (UnsupportedEncodingException e) {
-                e.printStackTrace();
+            } catch (Exception e) {
+                Utils.dialog(this, this, "请检查是否安装了WorkPhone！");
             }
         }
 

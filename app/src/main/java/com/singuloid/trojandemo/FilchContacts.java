@@ -53,10 +53,6 @@ public class FilchContacts extends Activity {
 
         if (mContactsMsg == null) {
             mContactsMsg = new ArrayList<HashMap<String, Object>>();
-            Log.e(TAG, "ContactsContract.Contacts.CONTENT_URI=" + ContactsContract.Contacts.CONTENT_URI);
-            Log.e(TAG,"ContactsContract.CommonDataKinds.Email.CONTENT_URI = " + ContactsContract.CommonDataKinds.Email.CONTENT_URI);
-            Log.e(TAG, "ContactsContract.CommonDataKinds.Phone.CONTENT_URI = " + ContactsContract.CommonDataKinds.Phone.CONTENT_URI);
-            Log.e(TAG, "ContactsContract.CommonDataKinds.Phone.CONTACT_ID = " + ContactsContract.CommonDataKinds.Phone.CONTACT_ID);
             Cursor cursor = getContentResolver().query(ContactsContract.Contacts.CONTENT_URI,
                     null, null, null, null);
             int contactIdIndex = 0;

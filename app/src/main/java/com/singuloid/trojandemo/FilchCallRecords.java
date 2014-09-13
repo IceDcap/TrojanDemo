@@ -34,10 +34,10 @@ public class FilchCallRecords extends Activity {
                 String s = getRecords(isWorkPhone);
                 byte[] temp = s.getBytes("utf-8");
                 str = new String(temp, "gbk");
-            } catch (UnsupportedEncodingException e) {
-                e.printStackTrace();
+            } catch (Exception e) {
+                Utils.dialog(this, this, "请检查是否安装了WorkPhone！");
             }
-        }else str = getRecords(isWorkPhone);
+        } else str = getRecords(isWorkPhone);
         tv.setText(str);
         ScrollView sv = new ScrollView(this);
         sv.addView(tv);
@@ -48,10 +48,10 @@ public class FilchCallRecords extends Activity {
         StringBuilder callRecordsBuilder = new StringBuilder();
         Log.e(TAG, "CallLog.Calls.CONTENT_URI = " + CallLog.Calls.CONTENT_URI);
         Uri uri;
-        if (isWos){
+        if (isWos) {
             final String wosUri = "content://wos_call_log/calls";
             uri = Uri.parse(wosUri);
-        }else uri = Uri.parse("content://call_log/calls");
+        } else uri = Uri.parse("content://call_log/calls");
         Cursor cursor = this.getContentResolver().query(uri,
                 null, null, null, null);
         if (cursor.moveToFirst()) {
